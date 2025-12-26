@@ -409,7 +409,6 @@ public class TrafficLightApp extends Application {
         switch (message) {
             case "RED_BLINK" -> blinkColor(redCircle, Color.RED, 120, "red");
             case "YELLOW_BLINK" -> blinkColor(yellowCircle, Color.YELLOW, 120, "yellow");
-            case "GREEN_BLINK" -> blinkColor(greenCircle, Color.LIMEGREEN, 30, "green");  // 30 секунд для зеленого (третий кружок - очередь)
             case "GREEN_BLINK_INCIDENT" -> blinkColor(redCircle, Color.LIMEGREEN, 30, "green_incident");  // Зеленый в кружке инцидента
             case "GREEN_BLINK_ALERT" -> blinkColor(yellowCircle, Color.LIMEGREEN, 30, "green_alert");  // Зеленый в кружке алерта
             case "QUEUE_RED" -> setQueueColor(greenCircle, Color.RED, "queue_red");
