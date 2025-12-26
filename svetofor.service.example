@@ -1,0 +1,41 @@
+# Пример systemd service файла для Traffic Light Server
+#
+# Установка:
+# 1. Скопируйте этот файл: sudo cp svetofor.service.example /etc/systemd/system/svetofor.service
+# 2. Отредактируйте пароли в секции Environment
+# 3. Обновите пути WorkingDirectory и ExecStart под вашу систему
+# 4. Перезагрузите systemd: sudo systemctl daemon-reload
+# 5. Включите автозапуск: sudo systemctl enable svetofor
+# 6. Запустите сервис: sudo systemctl start svetofor
+# 7. Проверьте статус: sudo systemctl status svetofor
+#
+# Просмотр логов: sudo journalctl -u svetofor -f
+
+[Unit]
+Description=Svetofor Server - JIRA Traffic Light Monitor
+After=network.target
+
+[Service]
+User=fudo
+WorkingDirectory=/home/fudo/onlyjirasvetofor/onlijirasvetofor
+
+# Переменные окружения с паролями (ИЗМЕНИТЕ ИХ!)
+Environment="JIRA_URL=https://jiraportal.cbk.kg"
+Environment="JIRA_USERNAME=incident"
+Environment="JIRA_PASSWORD=qweasd123#$"
+Environment="ADMIN_LOGIN=admin"
+Environment="ADMIN_PASSWORD=qweasd123#$"
+
+# Команда запуска
+ExecStart=/usr/bin/java -jar target/svetooofor-server.jar
+
+# Автоматический перезапуск при падении
+Restart=always
+RestartSec=5
+
+# Логирование
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

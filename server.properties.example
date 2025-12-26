@@ -1,0 +1,15 @@
+# Конфигурация сервера светофора (только JIRA интеграция)
+
+# Порт WebSocket сервера
+server.port=52521
+
+# JIRA настройки
+# Используйте переменные окружения для безопасности:
+# export JIRA_URL=https://jiraportal.cbk.kg
+# export JIRA_USERNAME=incident
+# export JIRA_PASSWORD=your_password
+jira.url=${JIRA_URL}
+jira.username=${JIRA_USERNAME}
+jira.password=${JIRA_PASSWORD}
+jira.issue.type=11206
+jira.poll.interval=5
